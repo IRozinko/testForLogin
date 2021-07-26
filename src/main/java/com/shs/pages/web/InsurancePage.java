@@ -3,7 +3,9 @@ package com.shs.pages.web;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.shs.model.Client;
-import com.shs.pages.web.PagePaths;
+import com.shs.pages.web.PagePaths.INSURANCE_PAGE;
+
+import java.io.File;
 
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -18,9 +20,15 @@ public class InsurancePage implements FormFilling {
     private SelenideElement companySelect = $("#fieldCompany");
     private SelenideElement annualField = $("#fieldAnnual");
     private SelenideElement approveCalculationChkBox = $("#fieldApproveCalculation");
+    private SelenideElement policyWindow = $("#nbtinsurance-disclosureform");
     private SelenideElement efaChkBox = $("#fieldEfa");
     private SelenideElement isElectronicChkBox = $("#fieldIsElectronic");
+    private SelenideElement illustrationWindow = $("#nbtinsurance-illustration");
+    //
     private SelenideElement reasonWhyInput = $("#fieldReasonWhy");
+    private SelenideElement reasonWindow = $("#nbtinsurance-reasonwhy");
+    private SelenideElement filePickerInput = $("#filePicker");
+    //
     private SelenideElement addBtn = $("#submit");
 
     public InsurancePage openPage() {
@@ -37,9 +45,17 @@ public class InsurancePage implements FormFilling {
         companySelect.selectOption("Assumption Life");
         annualField.setValue("1200");
         approveCalculationChkBox.click();
+        policyWindow.click();
+        filePickerInput.uploadFile(new File("src/test/resources/documents/sample.pdf"));
         efaChkBox.click();
         isElectronicChkBox.click();
+        illustrationWindow.click();
+        filePickerInput.uploadFile(new File("src/test/resources/documents/sample.pdf"));
+        //
         reasonWhyInput.selectOption(2);
+        reasonWindow.click();;
+        filePickerInput.uploadFile(new File("src/test/resources/documents/sample.pdf"));
+        //
         addBtn.click();
         pageTitle.waitUntil(disappear, 120000);
     }
