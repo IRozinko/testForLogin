@@ -10,7 +10,7 @@ public class AddInsuranceDef {
     PageCollection pages = new PageCollection();
     Client client = Client.builder().build();
 
-    @Given("registered client")
+    @Given("the registered client")
     public void registeredClient() {
         System.out.println("Register new client client");
     }
