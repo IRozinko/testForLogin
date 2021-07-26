@@ -1,7 +1,9 @@
 package com.shs.pages.web;
 
+import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
 import com.shs.model.Client;
+import com.shs.pages.web.PagePaths;
 
 import static com.codeborne.selenide.Condition.disappear;
 import static com.codeborne.selenide.Selectors.byXpath;
@@ -20,6 +22,11 @@ public class InsurancePage implements FormFilling {
     private SelenideElement isElectronicChkBox = $("#fieldIsElectronic");
     private SelenideElement reasonWhyInput = $("#fieldReasonWhy");
     private SelenideElement addBtn = $("#submit");
+
+    public InsurancePage openPage() {
+        Selenide.open(INSURANCE_PAGE);
+        return this;
+    }
 
     @Override
     public void fillForm(Client client) {
