@@ -5,7 +5,7 @@ import com.codeborne.selenide.Configuration;
 public class BrowserConfig {
     public void runConfig() {
 
-        Configuration.browser = "firefox";
+        Configuration.browser = "chrome";
         Configuration.startMaximized = true;
         Configuration.headless = false;
         //Configuration.holdBrowserOpen = true;
